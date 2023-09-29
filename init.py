@@ -3,14 +3,14 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton,QTextEdit
 
 from redimensionar import redimensiona_imagenes
-#from recortar import recorta_rostros
+from recortar import recorta_rostros
 
 class OpenCVThread(QThread):
     finished = pyqtSignal()
 
     def run(self):
         # Tu función de OpenCV aquí
-        print('run cv2')
+        recorta_rostros()
         # Realiza las operaciones de OpenCV
 
         # Emite la señal de finalización cuando termine
@@ -65,6 +65,5 @@ if __name__ == '__main__':
     window = MainWindow()
     # Mostrar la ventana principal
     window.show()
-
     # Iniciar el bucle de eventos de la aplicación
     sys.exit(app.exec_())
