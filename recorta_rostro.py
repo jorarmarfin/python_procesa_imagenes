@@ -12,7 +12,7 @@ os.makedirs(directorio_salida, exist_ok=True)
 # Abre un archivo de salida para registrar las respuestas
 with open(archivo_salida, 'w') as f:
     # Carga el clasificador de detección de rostros preentrenado
-    clasificador_rostros = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    clasificador_rostros = cv2.CascadeClassifier('/var/www/html/opencv/data/haarcascades/haarcascade_frontalface_alt.xml')
 
     # Proporciones para el recorte
     proporcion_ancho = 3

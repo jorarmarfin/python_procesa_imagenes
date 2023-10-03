@@ -23,7 +23,7 @@ os.makedirs(carpeta_recorte, exist_ok=True)
 imagen = cv2.imread(nombre_archivo)
 
 # Carga el clasificador de detección de rostros preentrenado
-clasificador_rostros = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+clasificador_rostros = cv2.CascadeClassifier('/var/www/html/opencv/data/haarcascades/haarcascade_frontalface_alt.xml')
 
 # Convierte la imagen a escala de grises (la detección de rostros funciona mejor en imágenes en escala de grises)
 imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
