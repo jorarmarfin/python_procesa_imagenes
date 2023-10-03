@@ -12,7 +12,7 @@ os.makedirs(directorio_salida, exist_ok=True)
 # Abre un archivo de salida para registrar las respuestas
 with open(archivo_salida, 'w') as f:
     # Carga el clasificador de detección de rostros preentrenado
-    clasificador_rostros = cv2.CascadeClassifier('/var/www/html/opencv/data/haarcascades/haarcascade_frontalface_alt.xml')
+    clasificador_rostros = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
     # Proporciones para el recorte
     proporcion_ancho = 3
@@ -36,7 +36,7 @@ with open(archivo_salida, 'w') as f:
                         ancho_recorte = w
                         alto_recorte = int(ancho_recorte * proporcion_alto / proporcion_ancho)
 
-                        rostro_recortado = imagen[y - 170:y + alto_recorte, x - 80:x + ancho_recorte + 100]
+                        rostro_recortado = imagen[y - 250:y + alto_recorte-80, x-80:x + ancho_recorte+100]
 
                         nombre_base, extension = os.path.splitext(archivo)
                         nombre_recorte = os.path.join(directorio_salida, f"{nombre_base}{extension}")
