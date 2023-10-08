@@ -1,0 +1,2 @@
+Imagen redimensionada: /mnt/DATOS/html/python/python_procesa_imagenes/61151851.png
+Imagen redimensionada: /mnt/DATOS/html/python/python_procesa_imagenes/70625750.jpeg

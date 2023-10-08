@@ -18,7 +18,7 @@ def redimensiona_imagenes():
             try:
                 with Image.open(ruta_archivo) as img:
                     ancho_original, alto_original = img.size
-                    if ancho_original < 1000:
+                    if ancho_original < 1000 or ancho_deseado != 2048:
                         # Calcula el alto proporcional
                         alto_deseado = int(alto_original * (ancho_deseado / ancho_original))
                         
