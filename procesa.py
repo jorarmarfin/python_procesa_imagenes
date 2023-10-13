@@ -3,6 +3,7 @@ import sys
 import redimensiona
 import recorta
 import fondo_blanco
+import depura
 
 # Códigos ANSI para colores
 COLOR_ROJO = "\033[91m"
@@ -11,6 +12,8 @@ COLOR_AMARILLO = "\033[93m"
 COLOR_AZUL = "\033[94m"
 COLOR_RESET = "\033[0m"  # Restablecer el color a su valor predeterminado
 
+def funcion0():
+    depura.imagenes()
 def funcion1():
     # Verifica si se proporciona un ancho personalizado como argumento
     if len(sys.argv) > 1:
@@ -36,6 +39,7 @@ def function3():
 def menu():
     while True:
         imprimir_texto_coloreado("Menú:", COLOR_VERDE)
+        imprimir_texto_coloreado("0. Depura imagenes", COLOR_AZUL)
         imprimir_texto_coloreado("1. Redimensionar imagen", COLOR_AZUL)
         imprimir_texto_coloreado("2. Recortar rostro", COLOR_AZUL)
         imprimir_texto_coloreado("3. Cambiar fondo de imagen", COLOR_AZUL)
@@ -43,7 +47,9 @@ def menu():
     
         opcion = input("Selecciona una opción: ")
         
-        if opcion == '1':
+        if opcion == '0':
+            funcion0()
+        elif opcion == '1':
             funcion1()
         elif opcion == '2':
             funcion2()
