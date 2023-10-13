@@ -23,8 +23,9 @@ def rostro():
         clasificador_rostros = cv2.CascadeClassifier(nombre_archivo_clasificador)
 
         # Proporciones para el recorte
-        proporcion_ancho = 3
-        proporcion_alto = 4
+        margin_y = 0.80
+        margin_y2 = 0.30
+        margin_x = 0.1
 
         # Recorre todas las imágenes en el directorio de entrada
         for archivo in os.listdir(directorio_entrada):
@@ -35,16 +36,18 @@ def rostro():
                 try:
                     if imagen is not None:
                         imagen_gris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-
                         rostros = clasificador_rostros.detectMultiScale(imagen_gris, scaleFactor=1.3, minNeighbors=5)
 
                         if len(rostros) > 0:
                             x, y, w, h = rostros[0]  # Obtiene las coordenadas del primer rostro
 
-                            ancho_recorte = w
-                            alto_recorte = int(ancho_recorte * proporcion_alto / proporcion_ancho)
+                            delta_y = int(margin_y * y)
+                            delta_y2 = int(margin_y2 * y)
+                            delta_x = int(margin_x * x)
+                            x1, y1 = x - delta_x, y - delta_y
+                            x2, y2 = x + w + delta_x, y + h + delta_y2
 
-                            rostro_recortado = imagen[y - 250:y + alto_recorte-80, x-80:x + ancho_recorte+100]
+                            rostro_recortado = imagen[y1:y2, x1:x2]
 
                             nombre_base, extension = os.path.splitext(archivo)
                             nombre_recorte = os.path.join(directorio_salida, f"{nombre_base}{extension}")
