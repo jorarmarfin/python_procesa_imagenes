@@ -4,6 +4,7 @@ import redimensiona
 import recorta
 import fondo_blanco
 import depura
+import recorte_unitario
 
 # Códigos ANSI para colores
 COLOR_ROJO = "\033[91m"
@@ -42,14 +43,19 @@ def function3():
     fondo_blanco.cambiar_fondo_blanco()
 
 
+def funcion5():
+    recorte_unitario.rostro_unitario()
+
+
 def menu():
     while True:
         imprimir_texto_coloreado("Menú:", COLOR_VERDE)
         imprimir_texto_coloreado("0. Depura imagenes", COLOR_AZUL)
         imprimir_texto_coloreado("1. Redimensionar imagen", COLOR_AZUL)
         imprimir_texto_coloreado("2. Recortar rostro", COLOR_AZUL)
-        imprimir_texto_coloreado("3. Cambiar fondo de imagen", COLOR_AZUL)
-        imprimir_texto_coloreado("4. Salir", COLOR_AZUL)
+        imprimir_texto_coloreado("3. Recortar rostro unitario", COLOR_AZUL)
+        imprimir_texto_coloreado("4. Cambiar fondo de imagen", COLOR_AZUL)
+        imprimir_texto_coloreado("5. Salir", COLOR_AZUL)
 
         opcion = input("Selecciona una opción: ")
 
@@ -60,8 +66,10 @@ def menu():
         elif opcion == '2':
             funcion2()
         elif opcion == '3':
-            function3()
+            funcion5()
         elif opcion == '4':
+            function3()
+        elif opcion == '5':
             imprimir_texto_coloreado("Adiós.", COLOR_ROJO)
             break
         else:

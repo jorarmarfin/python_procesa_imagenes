@@ -23,8 +23,8 @@ def rostro():
         clasificador_rostros = cv2.CascadeClassifier(nombre_archivo_clasificador)
 
         # Proporciones para el recorte
-        margin_y = 0.80
-        margin_y2 = 0.30
+        margin_y = 0.60
+        margin_y2 = 0.3
         margin_x = 0.1
 
         # Recorre todas las imágenes en el directorio de entrada
