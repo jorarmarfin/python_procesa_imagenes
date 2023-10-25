@@ -2,6 +2,7 @@ import cv2
 import os
 import urllib.request
 
+
 def rostro():
     # Directorio de entrada y salida
     directorio_entrada = os.getcwd()
@@ -22,11 +23,6 @@ def rostro():
         # Carga el clasificador de detección de rostros
         clasificador_rostros = cv2.CascadeClassifier(nombre_archivo_clasificador)
 
-        # Proporciones para el recorte
-        margin_y = 0.60
-        margin_y2 = 0.3
-        margin_x = 0.1
-
         # Recorre todas las imágenes en el directorio de entrada
         for archivo in os.listdir(directorio_entrada):
             if archivo.endswith(('.jpg', '.jpeg', '.png')):
@@ -40,13 +36,20 @@ def rostro():
 
                         if len(rostros) > 0:
                             x, y, w, h = rostros[0]  # Obtiene las coordenadas del primer rostro
-
+                            if y > 1200:
+                                margin_y = 0.8
+                            else:
+                                margin_y = 0.6
+                            margin_y2 = 0.1
+                            margin_x = 0.1
                             delta_y = int(margin_y * y)
-                            delta_y2 = int(margin_y2 * y)
+                            delta_y2 = int(margin_y2 * h)
                             delta_x = int(margin_x * x)
-                            x1, y1 = x - delta_x, y - delta_y
+                            x1, y1 = x - delta_x, delta_y
                             x2, y2 = x + w + delta_x, y + h + delta_y2
 
+                            f.write(f"foto {y}." + '\n')
+                            f.write(f"delta {delta_y}." + '\n')
                             rostro_recortado = imagen[y1:y2, x1:x2]
 
                             nombre_base, extension = os.path.splitext(archivo)
@@ -67,6 +70,7 @@ def rostro():
                 f.write(respuesta + '\n')
 
     print("Proceso completado. Los resultados se han registrado en 'salida.txt'.")
+
 
 # Puedes llamar a esta función en tu script principal
 if __name__ == "__main__":
