@@ -38,9 +38,11 @@ def rostro():
                             x, y, w, h = rostros[0]  # Obtiene las coordenadas del primer rostro
                             if y > 1200:
                                 margin_y = 0.8
-                            else:
+                            elif y > 600:
                                 margin_y = 0.6
-                            margin_y2 = 0.1
+                            else:
+                                margin_y = 0.3
+                            margin_y2 = 0.15
                             margin_x = 0.1
                             delta_y = int(margin_y * y)
                             delta_y2 = int(margin_y2 * h)
@@ -48,12 +50,15 @@ def rostro():
                             x1, y1 = x - delta_x, delta_y
                             x2, y2 = x + w + delta_x, y + h + delta_y2
 
+                            # f.write(f"foto {y}." + '\n')
+                            # f.write(f"delta {delta_y}." + '\n')
                             rostro_recortado = imagen[y1:y2, x1:x2]
+                            rostro_aclarado = cv2.convertScaleAbs(rostro_recortado, alpha=1.2, beta=0)
 
                             nombre_base, extension = os.path.splitext(archivo)
                             nombre_recorte = os.path.join(directorio_salida, f"{nombre_base}{extension}")
 
-                            if cv2.imwrite(nombre_recorte, rostro_recortado):
+                            if cv2.imwrite(nombre_recorte, rostro_aclarado):
                                 respuesta = f"Rostro recortado y guardado en {nombre_recorte}."
                             else:
                                 respuesta = f"Error al guardar la imagen recortada"
