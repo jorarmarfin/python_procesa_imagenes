@@ -48,8 +48,6 @@ def rostro():
                             x1, y1 = x - delta_x, delta_y
                             x2, y2 = x + w + delta_x, y + h + delta_y2
 
-                            f.write(f"foto {y}." + '\n')
-                            f.write(f"delta {delta_y}." + '\n')
                             rostro_recortado = imagen[y1:y2, x1:x2]
 
                             nombre_base, extension = os.path.splitext(archivo)
