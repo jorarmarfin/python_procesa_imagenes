@@ -38,8 +38,8 @@ def rostro():
                             x, y, w, h = rostros[0]  # Obtiene las coordenadas del primer rostro
                             if y > 1200:
                                 margin_y = 0.8
-                            elif y > 600:
-                                margin_y = 0.6
+                            elif y > 520:
+                                margin_y = 0.76
                             else:
                                 margin_y = 0.3
                             margin_y2 = 0.15
