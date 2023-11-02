@@ -58,7 +58,7 @@ def rostro():
                             nombre_base, extension = os.path.splitext(archivo)
                             nombre_recorte = os.path.join(directorio_salida, f"{nombre_base}{extension}")
 
-                            if cv2.imwrite(nombre_recorte, rostro_aclarado):
+                            if cv2.imwrite(nombre_recorte, rostro_recortado):
                                 respuesta = f"Rostro recortado y guardado en {nombre_recorte}."
                             else:
                                 respuesta = f"Error al guardar la imagen recortada"
