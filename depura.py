@@ -2,7 +2,7 @@ import subprocess
 
 def imagenes():
     # Comando de ejemplo
-    comando = 'find . -type f -exec sh -c \'if [ -e "/mnt/DATOS/OCAD/2024-1/IEN/fotos/{}" ]; then rm "{}"; fi\' \\;'
+    comando = 'find . -type f -exec sh -c \'if [ -e "/mnt/DATOS/OCAD/2024-1/ADMISION/fotos/{}" ]; then rm "{}"; fi\' \\;'
 
     # Ejecuta el comando y captura la salida
     resultado = subprocess.run(comando, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
